@@ -6,11 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.justso.learn.adapter.MY_GARDEN_PAGE_INDEX
 import com.justso.learn.adapter.PLANT_LIST_PAGE_INDEX
-import com.justso.learn.adapter.SunFlowerPagerAdapter
+import com.justso.learn.adapter.SunflowerPagerAdapter
 import com.justso.learn.databinding.FragmentViewPagerBinding
 
 class HomeViewPagerFragment: Fragment() {
@@ -22,7 +21,7 @@ class HomeViewPagerFragment: Fragment() {
         val binding = FragmentViewPagerBinding.inflate(inflater,container,false)
         val tabLayout = binding.tabs
         val viewPager = binding.viewPager
-        viewPager.adapter = SunFlowerPagerAdapter(this)
+        viewPager.adapter = SunflowerPagerAdapter(this)
         TabLayoutMediator(tabLayout,viewPager,
             TabLayoutMediator.OnConfigureTabCallback { tab, position ->
                 tab.setIcon(getTabIcon(position))
