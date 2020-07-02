@@ -12,12 +12,12 @@ interface PlantDao {
      * 查询所有
      */
     @Query("SELECT * FROM plants ORDER BY name")
-    fun getPlants()
+    fun getPlants():LiveData<List<Plant>>
     /**
      * 获取某个
      */
     @Query("SELECT * FROM plants WHERE id = :plantId")
-    fun getPlant(plantId:String)
+    fun getPlant(plantId:String):LiveData<Plant>
 
     @Query("SELECT * FROM plants WHERE growZoneNumber = :growZoneNumber ORDER BY name")
     fun getPlantsWithGrowZoneNumber(growZoneNumber: Int): LiveData<List<Plant>>

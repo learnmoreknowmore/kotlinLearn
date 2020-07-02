@@ -30,10 +30,6 @@ abstract class AppDatabase : RoomDatabase() {
                         val request = OneTimeWorkRequestBuilder<SeedDatabaseWorker>().build()
                         WorkManager.getInstance(context).enqueue(request)
                     }
-
-                    override fun onOpen(db: SupportSQLiteDatabase) {
-                        super.onOpen(db)
-                    }
                 })
                 .build()
         }
