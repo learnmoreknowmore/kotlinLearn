@@ -47,6 +47,9 @@ buildscript {
         uiAutomatorVersion = '2.2.0'
         viewPagerVersion = '1.0.0'
         workVersion = '2.1.0'
+        paging_version = '2.1.2'
+        material = "1.0.0"
+        appcompat = "1.1.0"
     }
 
     repositories {
