@@ -1,5 +1,6 @@
 package com.justso.learn.widgets
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Path
@@ -13,28 +14,30 @@ import com.justso.learn.R
 class MaskedCardView @JvmOverloads constructor
     (
     context: Context,
-    attributes: AttributeSet? = null,
+    attrs: AttributeSet? = null,
     defStyle: Int = R.attr.materialCardViewStyle
-) : MaterialCardView(context, attributes, defStyle) {
-    private val providerPath = ShapeAppearancePathProvider()
-    private val path = Path()
+) : MaterialCardView(context, attrs, defStyle) {
+    @SuppressLint("RestrictedApi")
+    private val pathProvider = ShapeAppearancePathProvider()
+    private val path: Path = Path()
     private val shapeAppearance: ShapeAppearanceModel = ShapeAppearanceModel(
         context,
-        attributes,
+        attrs,
         defStyle,
-        R.style.Widget_MaterialComponents_CardView
+        com.google.android.material.R.style.Widget_MaterialComponents_CardView
     )
-    private val rectF: RectF = RectF(0F, 0F, 0F, 0F)
+    private val rectF = RectF(0f, 0f, 0f, 0f)
 
-    override fun onDraw(canvas: Canvas?) {
-        canvas?.clipPath(path)
+    override fun onDraw(canvas: Canvas) {
+        canvas.clipPath(path)
         super.onDraw(canvas)
     }
 
+    @SuppressLint("RestrictedApi")
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         rectF.right = w.toFloat()
         rectF.bottom = h.toFloat()
-        providerPath.calculatePath(shapeAppearanceModel, 1F, rectF, path)
+        pathProvider.calculatePath(shapeAppearance, 1f, rectF, path)
         super.onSizeChanged(w, h, oldw, oldh)
     }
 }

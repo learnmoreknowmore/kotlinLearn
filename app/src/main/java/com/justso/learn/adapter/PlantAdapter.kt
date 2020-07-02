@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.justso.learn.HomeViewPagerFragmentDirections
-import com.justso.learn.R
 import com.justso.learn.data.Plant
 import com.justso.learn.databinding.ListItemPlantBinding
 

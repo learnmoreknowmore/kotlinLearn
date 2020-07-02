@@ -18,19 +18,23 @@ class HomeViewPagerFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentViewPagerBinding.inflate(inflater,container,false)
+        val binding = com.justso.learn.databinding.FragmentViewPagerBinding.inflate(inflater, container, false)
         val tabLayout = binding.tabs
         val viewPager = binding.viewPager
+
         viewPager.adapter = SunflowerPagerAdapter(this)
-        TabLayoutMediator(tabLayout,viewPager,
-            TabLayoutMediator.OnConfigureTabCallback { tab, position ->
-                tab.setIcon(getTabIcon(position))
-                tab.text = getTabTitle(position)
-            }).attach()
+
+        // Set the icon and text for each tab
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.setIcon(getTabIcon(position))
+            tab.text = getTabTitle(position)
+        }.attach()
 
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
+
         return binding.root
     }
+
     private fun getTabIcon(position: Int): Int {
         return when (position) {
             MY_GARDEN_PAGE_INDEX -> R.drawable.garden_tab_selector

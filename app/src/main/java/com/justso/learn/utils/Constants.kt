@@ -21,3 +21,5 @@ package com.justso.learn.utils
  */
 const val DATABASE_NAME = "sunflower-db"
 const val PLANT_DATA_FILENAME = "plants.json"
+
+const val buggyAppId:String = "8c11309263"
