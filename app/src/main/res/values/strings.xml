@@ -29,4 +29,5 @@
 
     <!-- Accessibility -->
     <string name="a11y_plant_item_image">植物图片</string>
+    <string name="retry">重试</string>
 </resources>

@@ -8,17 +8,22 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
 import com.justso.learn.adapter.MY_GARDEN_PAGE_INDEX
+import com.justso.learn.adapter.NETWORK_PAGE_INDEX
 import com.justso.learn.adapter.PLANT_LIST_PAGE_INDEX
 import com.justso.learn.adapter.SunflowerPagerAdapter
 import com.justso.learn.databinding.FragmentViewPagerBinding
 
-class HomeViewPagerFragment: Fragment() {
+class HomeViewPagerFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = com.justso.learn.databinding.FragmentViewPagerBinding.inflate(inflater, container, false)
+        val binding = com.justso.learn.databinding.FragmentViewPagerBinding.inflate(
+            inflater,
+            container,
+            false
+        )
         val tabLayout = binding.tabs
         val viewPager = binding.viewPager
 
@@ -39,6 +44,7 @@ class HomeViewPagerFragment: Fragment() {
         return when (position) {
             MY_GARDEN_PAGE_INDEX -> R.drawable.garden_tab_selector
             PLANT_LIST_PAGE_INDEX -> R.drawable.plant_list_tab_selector
+            NETWORK_PAGE_INDEX -> R.drawable.garden_tab_selector
             else -> throw IndexOutOfBoundsException()
         }
     }
@@ -47,6 +53,7 @@ class HomeViewPagerFragment: Fragment() {
         return when (position) {
             MY_GARDEN_PAGE_INDEX -> getString(R.string.my_garden_title)
             PLANT_LIST_PAGE_INDEX -> getString(R.string.plant_list_title)
+            NETWORK_PAGE_INDEX -> "网络数据"
             else -> null
         }
     }

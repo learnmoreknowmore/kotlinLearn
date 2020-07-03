@@ -19,10 +19,12 @@ package com.justso.learn.adapter
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.justso.learn.GardenFragment
+import com.justso.learn.NetworkPageFragment
 import com.justso.learn.PlantListFragment
 
 const val MY_GARDEN_PAGE_INDEX = 0
 const val PLANT_LIST_PAGE_INDEX = 1
+const val NETWORK_PAGE_INDEX = 2
 
 class SunflowerPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
@@ -31,7 +33,8 @@ class SunflowerPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment)
      */
     private val tabFragmentsCreators: Map<Int, () -> Fragment> = mapOf(
         MY_GARDEN_PAGE_INDEX to { GardenFragment() },
-        PLANT_LIST_PAGE_INDEX to { PlantListFragment() }
+        PLANT_LIST_PAGE_INDEX to { PlantListFragment() },
+        NETWORK_PAGE_INDEX to { NetworkPageFragment() }
     )
 
     override fun getItemCount() = tabFragmentsCreators.size

@@ -48,6 +48,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime:$rootProject.lifecycleVersion"
+
     implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
     implementation "androidx.recyclerview:recyclerview:$rootProject.recyclerViewVersion"
@@ -65,6 +67,7 @@ dependencies {
 
     implementation "com.google.android.material:material:$rootProject.material"
     implementation "androidx.appcompat:appcompat:$rootProject.appcompat"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$rootProject.appcompat"
     implementation "androidx.paging:paging-runtime:$paging_version" // For Kotlin use paging-runtime-ktx
 
     // alternatively - without Android dependencies for testing
@@ -75,6 +78,13 @@ dependencies {
 
     implementation 'com.tencent.bugly:crashreport:latest.release'
     implementation 'com.tencent.bugly:nativecrashreport:3.7.3'
+
+
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofit"
+    implementation  "com.squareup.retrofit2:retrofit-mock:$rootProject.retrofit"
+
+    implementation "com.squareup.okhttp3:logging-interceptor:${rootProject.okhttp_logging_interceptor}"
 
     // Testing dependencies
     androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
