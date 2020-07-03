@@ -1,6 +1,5 @@
-package com.justso.learn.fake
+package com.justso.learn.page.fake
 
-import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
 import com.justso.learn.vo.RedditPost
 

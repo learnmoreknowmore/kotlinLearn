@@ -6,7 +6,8 @@ import com.justso.learn.vo.RedditPost
 import retrofit2.HttpException
 import java.io.IOException
 
-class PageSource(private val api:NetworkApi,private val title:String): PagingSource<String, RedditPost>() {
+class PageSource
+    (private val api:NetworkApi,private val title:String): PagingSource<String, RedditPost>() {
     override suspend fun load(params: LoadParams<String>): LoadResult<String, RedditPost> {
         return try {
             val data:NetworkApi.ListingData = api.getTop(title,

@@ -1,4 +1,4 @@
-package com.justso.learn.fake
+package com.justso.learn.page.fake
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

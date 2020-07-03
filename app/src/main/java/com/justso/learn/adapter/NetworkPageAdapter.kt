@@ -1,17 +1,13 @@
 package com.justso.learn.adapter
 
-import android.database.DatabaseUtils
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.paging.PagedListAdapter
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.justso.learn.R
-import com.justso.learn.data.MockData
 import com.justso.learn.databinding.ItemNetworkDataBinding
-import com.justso.learn.databinding.ListItemGardenPlantingBinding
 import com.justso.learn.vo.RedditPost
 
 class NetworkPageAdapter: PagingDataAdapter<RedditPost, RecyclerView.ViewHolder>(DIFF_CALLBACK) {

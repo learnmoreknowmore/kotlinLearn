@@ -4,31 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.Observer
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.LoadState
 import androidx.paging.PagedList
-import androidx.savedstate.SavedStateRegistryOwner
 import com.justso.learn.adapter.NetworkPageAdapter
 import com.justso.learn.adapter.load.PageLoadStateAdapter
 import com.justso.learn.databinding.FragmentNetworkPageBinding
-import com.justso.learn.fake.CustomPageDataSourceFactory
-import com.justso.learn.fake.DataRepository
-import com.justso.learn.fake.PageAdapter
+import com.justso.learn.page.fake.CustomPageDataSourceFactory
+import com.justso.learn.page.fake.DataRepository
+import com.justso.learn.page.fake.PageAdapter
 import com.justso.learn.utils.InjectorUtils
 import com.justso.learn.viewmodels.NetworkViewModel
-import kotlinx.android.synthetic.main.fragment_network_page.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.observeOn
 import kotlinx.coroutines.launch
 
 class NetworkPageFragment: Fragment() {
@@ -51,30 +43,31 @@ class NetworkPageFragment: Fragment() {
 
     @ExperimentalCoroutinesApi
     private fun initAdapter(binding:FragmentNetworkPageBinding) {
-//        mAdapter = NetworkPageAdapter()
-//        binding.rvList.adapter = mAdapter
-//        binding.rvList.adapter = mAdapter.withLoadStateHeaderAndFooter(header = PageLoadStateAdapter(mAdapter),footer = PageLoadStateAdapter(mAdapter))
-        pageAdapter = PageAdapter()
-        binding.rvList.adapter = pageAdapter
+        mAdapter = NetworkPageAdapter()
+        binding.rvList.adapter = mAdapter
+        binding.rvList.adapter = mAdapter.withLoadStateHeaderAndFooter(header = PageLoadStateAdapter(mAdapter),footer = PageLoadStateAdapter(mAdapter))
+//        pageAdapter = PageAdapter()
+//        binding.rvList.adapter = pageAdapter
 
-//        lifecycleScope.launch {
-//            mAdapter.loadStateFlow.collectLatest {
-//                binding.swipeRefresh.isRefreshing = it.refresh is LoadState.Loading
-//
-//            }
-//        }
-//        lifecycleScope.launch {
-//            networkViewModel.data.collectLatest {
-//                mAdapter.submitData(it)
-//            }
-//        }
-        fakeData()
+        lifecycleScope.launch {
+            mAdapter.loadStateFlow.collectLatest {
+                binding.swipeRefresh.isRefreshing = it.refresh is LoadState.Loading
+
+            }
+        }
+        lifecycleScope.launch {
+            networkViewModel.data.collectLatest {
+                mAdapter.submitData(it)
+            }
+        }
+        //fakeData()
     }
 
     private fun initSwipeRefresh(binding:FragmentNetworkPageBinding) {
         binding.swipeRefresh.setOnRefreshListener {
-            fakeData()
-            binding.swipeRefresh.isRefreshing = false
+            mAdapter.refresh()
+//            fakeData()
+//            binding.swipeRefresh.isRefreshing = false
         }
     }
     private fun fakeData(){
